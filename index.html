@@ -33,28 +33,7 @@ body {
   font-size: 16px;
   line-height: 1.6;
   overflow-x: hidden;
-  cursor: none;
 }
-
-/* ── CURSOR ── */
-#cur-ring, #cur-dot {
-  position: fixed;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%,-50%);
-}
-#cur-ring {
-  width: 40px; height: 40px;
-  border: 1.5px solid rgba(139,92,246,0.6);
-  transition: width .25s, height .25s, border-color .25s;
-}
-#cur-dot {
-  width: 7px; height: 7px;
-  background: var(--purple);
-  box-shadow: 0 0 12px var(--purple);
-}
-body.hov #cur-ring { width: 56px; height: 56px; border-color: var(--purple); }
 
 /* ── PROGRESS ── */
 #prog {
@@ -764,7 +743,12 @@ footer p { font-size:.78rem; color:var(--muted); }
     <div class="skill-tile">
       <div class="skill-ico">🔧</div>
       <h3>Backend</h3>
-      <div class="tags"><span class="tag">Supabase Auth</span><span class="tag">Real-Time DB</span></div>
+      <div class="tags"><span class="tag">Supabase Auth</span><span class="tag">Real-Time DB</span><span class="tag">Bucket</span></div>
+    </div>
+    <div class="skill-tile">
+      <div class="skill-ico">🔧</div>
+      <h3>AI Models</h3>
+      <div class="tags"><span class="tag">Open Claw</span><span class="tag">Claud</span><span class="tag">CodeX</span></div>
     </div>
   </div>
 </section>
