@@ -654,6 +654,190 @@ footer p { font-size:.78rem; color:var(--muted); }
   .hero-name{font-family: poppins;}
   .hero-name .line1{font-family: poppins;};
 }
+
+/* ── SHOWCASE ── */
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.showcase-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s;
+}
+.showcase-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.showcase-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.showcase-item:hover {
+  transform: translateY(-8px);
+  border-color: var(--purple);
+}
+.showcase-item:hover img {
+  transform: scale(1.1);
+}
+.showcase-item:hover .showcase-overlay {
+  opacity: 1;
+}
+.showcase-info h4 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+.showcase-info p {
+  font-size: 0.8rem;
+  color: var(--purple-light);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── HOBBIES ── */
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+.hobby-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.hobby-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-purple);
+}
+.hobby-img-wrap {
+  width: 100%;
+  height: 160px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+}
+.hobby-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.hobby-card h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+.hobby-card p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── FOLDER COMPONENT (VANILLA) ── */
+.folder-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  perspective: 1000px;
+}
+.folder-wrapper {
+  position: relative;
+  width: 100px;
+  height: 80px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.folder-wrapper:not(.is-open):hover {
+  transform: translateY(-8px);
+}
+.folder-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 0 10px 10px 10px;
+  z-index: 10;
+}
+.folder-tab {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 30px;
+  height: 10px;
+  border-radius: 5px 5px 0 0;
+}
+.folder-paper {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10%);
+  border-radius: 10px;
+  z-index: 20;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.folder-wrapper:not(.is-open):hover .folder-paper {
+  transform: translateX(-50%) translateY(-5px);
+}
+.folder-front {
+  position: absolute;
+  inset: 0;
+  border-radius: 5px 10px 10px 10px;
+  z-index: 30;
+  transform-origin: bottom;
+  transition: all 0.3s ease-in-out;
+}
+.folder-wrapper:not(.is-open):hover .folder-front.front-right {
+  transform: skew(-15deg) scaleY(0.6);
+}
+.folder-wrapper:not(.is-open):hover .folder-front.front-left {
+  transform: skew(15deg) scaleY(0.6);
+}
+
+/* Open State */
+.folder-wrapper.is-open {
+  transform: translateY(-8px);
+}
+.folder-wrapper.is-open .folder-front.front-right { transform: skew(-15deg) scaleY(0.6); }
+.folder-wrapper.is-open .folder-front.front-left { transform: skew(15deg) scaleY(0.6); }
+
+.folder-wrapper.is-open .folder-paper:nth-child(3) { transform: translate(-150%, -100%) rotate(-25deg); width: 75%; height: 85%; }
+.folder-wrapper.is-open .folder-paper:nth-child(4) { transform: translate(-60%, -120%) rotate(-10deg); width: 75%; height: 85%; }
+.folder-wrapper.is-open .folder-paper:nth-child(5) { transform: translate(40%, -120%) rotate(10deg); width: 75%; height: 85%; }
+.folder-wrapper.is-open .folder-paper:nth-child(6) { transform: translate(130%, -100%) rotate(25deg); width: 75%; height: 85%; }
+
+.folder-paper:hover {
+  z-index: 50;
+}
+.folder-paper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.folder-paper:hover img {
+  transform: scale(1.1);
+}
 </style>
 </head>
 <body>
@@ -672,7 +856,9 @@ footer p { font-size:.78rem; color:var(--muted); }
     <a href="#tools">Tools</a>
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
+    <a href="#showcase">Showcase</a>
     <a href="#achievements">Achievements</a>
+    <a href="#hobbies">Hobbies</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -873,6 +1059,27 @@ footer p { font-size:.78rem; color:var(--muted); }
   </div>
 </section>
 
+<!-- SHOWCASE -->
+<section id="showcase">
+  <div class="sec-tag r">Portfolio</div>
+  <h2 class="sec-title r d1">Visual <span>Showcase</span></h2>
+  <div style="display:flex; justify-content:center; align-items:center; padding: 4rem 0;">
+    <div class="folder-container r d1" style="height:300px;">
+      <div class="folder-wrapper" data-color="#8b5cf6" data-size="2.5">
+        <div class="folder-tab"></div>
+        <div class="folder-back"></div>
+        <div class="folder-paper"><img src="design_showcase_1_1777208264479.png" alt="Work 1"></div>
+        <div class="folder-paper"><img src="design_showcase_2_1777208281871.png" alt="Work 2"></div>
+        <div class="folder-paper"><img src="design_showcase_3_1777208298273.png" alt="Work 3"></div>
+        <div class="folder-paper"><img src="design_showcase_4_1777208317012.png" alt="Work 4"></div>
+        <div class="folder-front front-left"></div>
+        <div class="folder-front front-right"></div>
+      </div>
+    </div>
+  </div>
+  <p class="r d2" style="text-align:center; color:var(--muted); font-size:.9rem; margin-top:2rem;">Click to explore my design archives</p>
+</section>
+
 <!-- ACHIEVEMENTS -->
 <section id="achievements">
   <div class="sec-tag r">Recognition</div>
@@ -927,6 +1134,35 @@ footer p { font-size:.78rem; color:var(--muted); }
       <div class="edu-info"><b>Sri Rama Krishna Mission Ashrama (South)</b><br>T-nagar, Chennai</div>
     </div>
     <div class="edu-year">2022–23</div>
+  </div>
+</section>
+
+<!-- HOBBIES -->
+<section id="hobbies">
+  <div class="sec-tag r">Lifestyle</div>
+  <h2 class="sec-title r d1">Beyond the <span>Code</span></h2>
+  <div class="hobbies-grid">
+    <div class="hobby-card r d1">
+      <div class="hobby-img-wrap">
+        <img src="hobby_gaming_1777208332286.png" alt="Gaming">
+      </div>
+      <h3>Gaming</h3>
+      <p>Exploring immersive worlds and strategic gameplay. It fuels my problem-solving skills and creativity.</p>
+    </div>
+    <div class="hobby-card r d2">
+      <div class="hobby-img-wrap">
+        <img src="hobby_photography_1777208351953.png" alt="Photography">
+      </div>
+      <h3>Photography</h3>
+      <p>Capturing moments and perspectives. It helps me appreciate the fine details in design and composition.</p>
+    </div>
+    <div class="hobby-card r d3">
+      <div class="hobby-img-wrap">
+        <div style="width:100%; height:100%; background:var(--purple-subtle); display:flex; align-items:center; justify-content:center; font-size:3rem;">✈️</div>
+      </div>
+      <h3>Traveling</h3>
+      <p>Exploring new cultures and landscapes. It broadens my horizons and inspires my creative projects.</p>
+    </div>
   </div>
 </section>
 
@@ -1101,6 +1337,75 @@ function buildWaveTools() {
 }
 
 buildWaveTools();
+
+// ── FOLDER COMPONENT LOGIC ──
+function darkenHex(hex, percent) {
+  let color = hex.startsWith('#') ? hex.slice(1) : hex;
+  if (color.length === 3) color = color.split('').map(c => c + c).join('');
+  const num = parseInt(color, 16);
+  let r = (num >> 16) & 0xff;
+  let g = (num >> 8) & 0xff;
+  let b = num & 0xff;
+  r = Math.max(0, Math.min(255, Math.floor(r * (1 - percent))));
+  g = Math.max(0, Math.min(255, Math.floor(g * (1 - percent))));
+  b = Math.max(0, Math.min(255, Math.floor(b * (1 - percent))));
+  return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
+}
+
+function initFolders() {
+  document.querySelectorAll('.folder-wrapper').forEach(folder => {
+    const color = folder.dataset.color || '#5227FF';
+    const size = folder.dataset.size || 1;
+    const backColor = darkenHex(color, 0.1);
+    
+    folder.style.transform = `scale(${size})`;
+    folder.querySelector('.folder-tab').style.backgroundColor = backColor;
+    folder.querySelector('.folder-back').style.backgroundColor = backColor;
+    folder.querySelectorAll('.folder-front').forEach(f => f.style.backgroundColor = color);
+    
+    const papers = folder.querySelectorAll('.folder-paper');
+    papers.forEach((p, i) => {
+      p.style.backgroundColor = i % 2 === 0 ? darkenHex('#ffffff', 0.1) : '#ffffff';
+    });
+
+    folder.addEventListener('click', (e) => {
+      e.stopPropagation();
+      folder.classList.toggle('is-open');
+    });
+
+    folder.addEventListener('mousemove', (e) => {
+      if (!folder.classList.contains('is-open')) return;
+      const rect = folder.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const offsetX = (e.clientX - centerX) * 0.15;
+      const offsetY = (e.clientY - centerY) * 0.15;
+      
+      papers.forEach((p, i) => {
+        let baseTransform = '';
+        if (i === 0) baseTransform = 'translate(-150%, -100%) rotate(-25deg)';
+        if (i === 1) baseTransform = 'translate(-60%, -120%) rotate(-10deg)';
+        if (i === 2) baseTransform = 'translate(40%, -120%) rotate(10deg)';
+        if (i === 3) baseTransform = 'translate(130%, -100%) rotate(25deg)';
+        p.style.transform = `${baseTransform} translate(${offsetX}px, ${offsetY}px)`;
+      });
+    });
+
+    folder.addEventListener('mouseleave', () => {
+      if (!folder.classList.contains('is-open')) return;
+      papers.forEach((p, i) => {
+        let baseTransform = '';
+        if (i === 0) baseTransform = 'translate(-150%, -100%) rotate(-25deg)';
+        if (i === 1) baseTransform = 'translate(-60%, -120%) rotate(-10deg)';
+        if (i === 2) baseTransform = 'translate(40%, -120%) rotate(10deg)';
+        if (i === 3) baseTransform = 'translate(130%, -100%) rotate(25deg)';
+        p.style.transform = baseTransform;
+      });
+    });
+  });
+}
+
+initFolders();
 
 // ── ANIMATE WAVE MOVING ──
 let waveOffset = 0;
